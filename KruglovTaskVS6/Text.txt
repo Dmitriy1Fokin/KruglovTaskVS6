@@ -1,0 +1,1 @@
+The first generations of IA-32 processors The first of these numeric coprocessors was the Intel 8087, which was followed by the Intel 287 and Intel 387 numeric coprocessors.

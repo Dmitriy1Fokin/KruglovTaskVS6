@@ -59,6 +59,7 @@ Point addPoint();
 void PrintVectorShape(Shape shape);
 void PrintPoints(Point point);
 int SumOfTopOfShapes(vector<Shape> vShapes);
+void GeneralInfoOfShapes(vector<Shape> vShapes);
 void Task2();
 
 
@@ -197,6 +198,26 @@ int SumOfTopOfShapes(vector<Shape> vShapes)
 	return sum;
 }
 
+void GeneralInfoOfShapes(vector<Shape> vShapes)
+{
+	int tringle(0), rectangle(0), pentagon(0);
+
+	for (int i = 0; i < vShapes.size(); i++)
+	{
+		if (vShapes[i].vertex_num == 3)
+			tringle += 1; 
+		if (vShapes[i].vertex_num == 4)
+			rectangle += 1; 
+		if (vShapes[i].vertex_num == 5)
+			pentagon += 1;
+	}
+
+	cout << "Number of shapes:\n";
+	cout << "Tringles: " << tringle << endl;
+	cout << "Rectangles: " << rectangle << endl;
+	cout << "Pentagons: " << pentagon << endl;
+}
+
 void Task2()
 {
 	vector<Shape> vectorShape(3);
@@ -205,6 +226,8 @@ void Task2()
 	
 	int sumOfTop;
 	cout << "Sum of top of the shapes: " << (sumOfTop = SumOfTopOfShapes(vectorShape)) << endl;
+
+	GeneralInfoOfShapes(vectorShape);
 }
 
 

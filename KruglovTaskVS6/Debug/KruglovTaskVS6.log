@@ -1,2 +1,8 @@
-﻿  KruglovTaskVS6.vcxproj -> D:\workspaceCpp\KruglovTaskVS6\Debug\KruglovTaskVS6.exe
+﻿  KruglovTaskVS6.cpp
+d:\workspacecpp\kruglovtaskvs6\kruglovtaskvs6\kruglovtaskvs6.cpp(44): warning C4091: typedef : пропускается слева от "Point", когда ни одна переменная не объявлена
+d:\workspacecpp\kruglovtaskvs6\kruglovtaskvs6\kruglovtaskvs6.cpp(50): warning C4091: typedef : пропускается слева от "Shape", когда ни одна переменная не объявлена
+d:\workspacecpp\kruglovtaskvs6\kruglovtaskvs6\kruglovtaskvs6.cpp(111): warning C4018: <: несоответствие типов со знаком и без знака
+d:\workspacecpp\kruglovtaskvs6\kruglovtaskvs6\kruglovtaskvs6.cpp(135): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+d:\workspacecpp\kruglovtaskvs6\kruglovtaskvs6\kruglovtaskvs6.cpp(157): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  KruglovTaskVS6.vcxproj -> D:\workspaceCpp\KruglovTaskVS6\Debug\KruglovTaskVS6.exe
   KruglovTaskVS6.vcxproj -> D:\workspaceCpp\KruglovTaskVS6\Debug\KruglovTaskVS6.pdb (Partial PDB)

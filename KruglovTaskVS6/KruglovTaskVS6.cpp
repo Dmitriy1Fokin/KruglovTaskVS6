@@ -38,38 +38,31 @@ typedef struct
 
 using namespace std;
 
+typedef struct Point
+{
+	int x, y;
+};
+
+typedef struct Shape
+{
+	int vertex_num;
+	vector<Point> vertexes;
+};
+
 string ReadFromTextFile(string pathToText);
 vector<string> stringToVector(string mainString);
 void PrintElem(string temp);
+void Task1();
+
+Shape addVectorShape();
+Point addPoint();
+void PrintVectorShape(Shape shape);
+void Task2();
 
 int main()
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	string str = ReadFromTextFile("Text.txt");
-	//cout << str << endl;
-
-	SetConsoleTextAttribute(hConsole, (WORD)((15 << 4) | 0));
-	for (int i = 0; i < str.length(); i++)
-	{
-		if (str[i] == ' ')
-		{
-			SetConsoleTextAttribute(hConsole, (WORD)((15 << 0) | 0));
-			cout << str[i];
-			SetConsoleTextAttribute(hConsole, (WORD)((15 << 4) | 0));
-		}
-		cout << str[i];
-	}
-	SetConsoleTextAttribute(hConsole, (WORD)((15 << 0) | 0));
-
-
-	vector<string> vecStr = stringToVector(str);
-	cout << "\nVector:\n";
-	for_each(vecStr.begin(), vecStr.end(), PrintElem);
-	sort(vecStr.begin(), vecStr.end());
-	vecStr.erase(unique(vecStr.begin(), vecStr.end()), vecStr.end());
-	cout << "\nwithout duplicates:\n";
-	for_each(vecStr.begin(), vecStr.end(), PrintElem);
-
+	//Task1();
+	Task2();
 
 	_getch();
     return 0;
@@ -107,4 +100,74 @@ vector<string> stringToVector(string mainString)
 void PrintElem(string temp)
 {
 	cout << temp << endl;
+}
+
+void Task1()
+{
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	string str = ReadFromTextFile("Text.txt");
+
+	SetConsoleTextAttribute(hConsole, (WORD)((15 << 4) | 0));
+	for (int i = 0; i < str.length(); i++)
+	{
+		if (str[i] == ' ')
+		{
+			SetConsoleTextAttribute(hConsole, (WORD)((15 << 0) | 0));
+			cout << str[i];
+			SetConsoleTextAttribute(hConsole, (WORD)((15 << 4) | 0));
+		}
+		cout << str[i];
+	}
+	SetConsoleTextAttribute(hConsole, (WORD)((15 << 0) | 0));
+
+
+	vector<string> vecStr = stringToVector(str);
+	cout << "\nVector:\n";
+	for_each(vecStr.begin(), vecStr.end(), PrintElem);
+	sort(vecStr.begin(), vecStr.end());
+	vecStr.erase(unique(vecStr.begin(), vecStr.end()), vecStr.end());
+	cout << "\nwithout duplicates:\n";
+	for_each(vecStr.begin(), vecStr.end(), PrintElem);
+}
+
+Shape addVectorShape()
+{
+	srand(time(0));
+	int vertexNumBuffer = (rand() % 3) + 3;
+	vector<Point> vectorPoint(vertexNumBuffer);
+	generate(vectorPoint.begin(), vectorPoint.end(), addPoint);	
+
+	Shape shape;
+	shape.vertex_num = vertexNumBuffer;
+	shape.vertexes = vectorPoint;
+
+	return shape;
+}
+
+Point addPoint()
+{
+	srand(time(0));
+	int x = rand() % 51;
+	int y = rand() % 51;
+	Point point;
+	point.x = x;
+	point.y = y;
+
+	return point;
+}
+
+void PrintVectorShape(Shape shape)
+{
+	cout << shape.vertex_num << endl;
+}
+
+void Task2()
+{
+	vector<Shape> vectorShape(10);
+	generate(vectorShape.begin(), vectorShape.end(), addVectorShape);
+	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);
+
+
+
+		
 }

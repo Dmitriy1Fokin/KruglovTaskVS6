@@ -60,10 +60,12 @@ void PrintVectorShape(Shape shape);
 void PrintPoints(Point point);
 int SumOfTopOfShapes(vector<Shape> vShapes);
 void GeneralInfoOfShapes(vector<Shape> vShapes);
-vector<Shape> DeletePentagons(vector<Shape> vShapes);
+bool isTringle(Shape shape);
+bool isRectangle(Shape shape);
 bool isPentagon(Shape shape);
+vector<Shape> DeletePentagons(vector<Shape> vShapes);
+vector<Point> FirstCoordinate(vector<Shape> vShapes);
 void Task2();
-
 
 
 
@@ -202,22 +204,29 @@ int SumOfTopOfShapes(vector<Shape> vShapes)
 
 void GeneralInfoOfShapes(vector<Shape> vShapes)
 {
-	int tringle(0), rectangle(0), pentagon(0);
-
-	for (int i = 0; i < vShapes.size(); i++)
-	{
-		if (vShapes[i].vertex_num == 3)
-			tringle += 1; 
-		if (vShapes[i].vertex_num == 4)
-			rectangle += 1; 
-		if (vShapes[i].vertex_num == 5)
-			pentagon += 1;
-	}
+	int tringle = count_if(vShapes.begin(), vShapes.end(), isTringle);
+	int rectangle = count_if(vShapes.begin(), vShapes.end(), isRectangle);
+	int pentagon = count_if(vShapes.begin(), vShapes.end(), isPentagon);
 
 	cout << "Number of shapes:\n";
 	cout << "Tringles: " << tringle << endl;
 	cout << "Rectangles: " << rectangle << endl;
 	cout << "Pentagons: " << pentagon << endl;
+}
+
+bool isTringle(Shape shape)
+{
+	return shape.vertex_num == 3;
+}
+
+bool isRectangle(Shape shape)
+{
+	return shape.vertex_num == 4;
+}
+
+bool isPentagon(Shape shape)
+{
+	return shape.vertex_num == 5;
 }
 
 vector<Shape> DeletePentagons(vector<Shape> vShapes)
@@ -226,10 +235,10 @@ vector<Shape> DeletePentagons(vector<Shape> vShapes)
 	return vShapes;
 }
 
-bool isPentagon(Shape shape)
-{
-	return shape.vertex_num == 5;
-}
+//vector<Point> FirstCoordinate(vector<Shape> vShapes)
+//{
+//
+//}
 
 void Task2()
 {

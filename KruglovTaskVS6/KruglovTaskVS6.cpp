@@ -47,6 +47,11 @@ typedef struct Shape
 {
 	int vertex_num;
 	vector<Point> vertexes;
+
+	bool operator < (const Shape& sh)
+	{
+		return this->vertex_num < sh.vertex_num;
+	}
 };
 
 string ReadFromTextFile(string pathToText);
@@ -249,7 +254,7 @@ vector<Point> FirstCoordinate(vector<Shape> vShapes)
 
 void Task2()
 {
-	vector<Shape> vectorShape(3);
+	vector<Shape> vectorShape(10);
 	generate(vectorShape.begin(), vectorShape.end(), addVectorShape);
 	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);	
 	
@@ -265,6 +270,10 @@ void Task2()
 	vector<Point> firstPoints = FirstCoordinate(vectorShape);
 	cout << endl;
 	for_each(firstPoints.begin(), firstPoints.end(), PrintPoints);
+
+	cout << "\nSORT:\n";
+	sort(vectorShape.begin(), vectorShape.end());
+	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);
 }
 
 

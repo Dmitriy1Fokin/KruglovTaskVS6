@@ -57,10 +57,15 @@ void Task1();
 Shape addVectorShape();
 Point addPoint();
 void PrintVectorShape(Shape shape);
+void PrintPoints(Point point);
 void Task2();
+
+
+
 
 int main()
 {
+	srand(time(0));
 	//Task1();
 	Task2();
 
@@ -132,7 +137,6 @@ void Task1()
 
 Shape addVectorShape()
 {
-	srand(time(0));
 	int vertexNumBuffer = (rand() % 3) + 3;
 	vector<Point> vectorPoint(vertexNumBuffer);
 	generate(vectorPoint.begin(), vectorPoint.end(), addPoint);	
@@ -146,7 +150,6 @@ Shape addVectorShape()
 
 Point addPoint()
 {
-	srand(time(0));
 	int x = rand() % 51;
 	int y = rand() % 51;
 	Point point;
@@ -158,16 +161,36 @@ Point addPoint()
 
 void PrintVectorShape(Shape shape)
 {
-	cout << shape.vertex_num << endl;
+	switch (shape.vertex_num)
+	{
+	case 3: 
+	{
+		cout << "Shape: Tringle.\n"; 
+		for_each(shape.vertexes.begin(), shape.vertexes.end(), PrintPoints);
+	} break;
+	case 4: 
+	{
+		cout << "Shape: Rectangle.\n";
+		for_each(shape.vertexes.begin(), shape.vertexes.end(), PrintPoints);
+	} break;
+	case 5: 
+	{
+		cout << "Shape: Pentagon.\n";
+		for_each(shape.vertexes.begin(), shape.vertexes.end(), PrintPoints);
+	} break;
+	}
+}
+
+void PrintPoints(Point point)
+{
+	cout << "Point: (" << point.x << ", " << point.y << ")\n";
 }
 
 void Task2()
 {
 	vector<Shape> vectorShape(10);
 	generate(vectorShape.begin(), vectorShape.end(), addVectorShape);
-	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);
-
-
-
-		
+	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);	
 }
+
+

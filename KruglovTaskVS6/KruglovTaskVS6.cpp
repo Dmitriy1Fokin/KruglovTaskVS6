@@ -235,10 +235,17 @@ vector<Shape> DeletePentagons(vector<Shape> vShapes)
 	return vShapes;
 }
 
-//vector<Point> FirstCoordinate(vector<Shape> vShapes)
-//{
-//
-//}
+vector<Point> FirstCoordinate(vector<Shape> vShapes)
+{
+	vector<Point> vPoint;
+
+	for (int i = 0; i < vShapes.size(); i++)
+		vPoint.push_back(vShapes[i].vertexes[0]);
+
+	return vPoint;
+}
+
+
 
 void Task2()
 {
@@ -247,12 +254,17 @@ void Task2()
 	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);	
 	
 	int sumOfTop;
-	cout << "Sum of top of the shapes: " << (sumOfTop = SumOfTopOfShapes(vectorShape)) << endl;
+	cout << endl <<"Sum of top of the shapes: " << (sumOfTop = SumOfTopOfShapes(vectorShape)) << endl << endl;
 
 	GeneralInfoOfShapes(vectorShape);
 
 	vectorShape = DeletePentagons(vectorShape);
+	cout << endl;
 	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);
+
+	vector<Point> firstPoints = FirstCoordinate(vectorShape);
+	cout << endl;
+	for_each(firstPoints.begin(), firstPoints.end(), PrintPoints);
 }
 
 

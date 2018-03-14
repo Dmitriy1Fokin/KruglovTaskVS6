@@ -60,6 +60,8 @@ void PrintVectorShape(Shape shape);
 void PrintPoints(Point point);
 int SumOfTopOfShapes(vector<Shape> vShapes);
 void GeneralInfoOfShapes(vector<Shape> vShapes);
+vector<Shape> DeletePentagons(vector<Shape> vShapes);
+bool isPentagon(Shape shape);
 void Task2();
 
 
@@ -218,6 +220,17 @@ void GeneralInfoOfShapes(vector<Shape> vShapes)
 	cout << "Pentagons: " << pentagon << endl;
 }
 
+vector<Shape> DeletePentagons(vector<Shape> vShapes)
+{
+	vShapes.erase(remove_if(vShapes.begin(), vShapes.end(), isPentagon), vShapes.end());
+	return vShapes;
+}
+
+bool isPentagon(Shape shape)
+{
+	return shape.vertex_num == 5;
+}
+
 void Task2()
 {
 	vector<Shape> vectorShape(3);
@@ -228,6 +241,9 @@ void Task2()
 	cout << "Sum of top of the shapes: " << (sumOfTop = SumOfTopOfShapes(vectorShape)) << endl;
 
 	GeneralInfoOfShapes(vectorShape);
+
+	vectorShape = DeletePentagons(vectorShape);
+	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);
 }
 
 

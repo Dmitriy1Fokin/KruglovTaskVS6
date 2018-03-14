@@ -58,6 +58,7 @@ Shape addVectorShape();
 Point addPoint();
 void PrintVectorShape(Shape shape);
 void PrintPoints(Point point);
+int SumOfTopOfShapes(vector<Shape> vShapes);
 void Task2();
 
 
@@ -186,11 +187,24 @@ void PrintPoints(Point point)
 	cout << "Point: (" << point.x << ", " << point.y << ")\n";
 }
 
+int SumOfTopOfShapes(vector<Shape> vShapes)
+{
+	int sum(0);
+	
+	for (int i = 0; i < vShapes.size(); i++)
+		sum += vShapes[i].vertex_num;
+
+	return sum;
+}
+
 void Task2()
 {
-	vector<Shape> vectorShape(10);
+	vector<Shape> vectorShape(3);
 	generate(vectorShape.begin(), vectorShape.end(), addVectorShape);
 	for_each(vectorShape.begin(), vectorShape.end(), PrintVectorShape);	
+	
+	int sumOfTop;
+	cout << "Sum of top of the shapes: " << (sumOfTop = SumOfTopOfShapes(vectorShape)) << endl;
 }
 
 
